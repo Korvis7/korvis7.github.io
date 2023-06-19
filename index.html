@@ -1,119 +1,278 @@
 <!DOCTYPE html>
-<html lang="en-us">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Unity WebGL Player | Test World 1</title>
-    <link rel="shortcut icon" href="TemplateData/favicon.ico">
-    <link rel="stylesheet" href="TemplateData/style.css">
-  </head>
-  <body>
-    <div id="unity-container" class="unity-desktop">
-      <canvas id="unity-canvas" width=960 height=600></canvas>
-      <div id="unity-loading-bar">
-        <div id="unity-logo"></div>
-        <div id="unity-progress-bar-empty">
-          <div id="unity-progress-bar-full"></div>
+<html>
+<head>
+<title>Revere Copper Company Model 1847 Cannons</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+
+  <!-- REFERENCE TO SOURCE WEBSITE: https://www.w3schools.com/w3css/tryit.asp?filename=tryw3css_templates_architect&stacked=h -->
+
+<!-- Navbar (sit on top) -->
+<div class="w3-top">
+  <div class="w3-bar w3-white w3-wide w3-padding w3-card">
+    <a href="#home" class="w3-bar-item w3-button"><b>Revere Copper Company</b> Model 1857 'Napoleon' Cannons</a>
+    <!-- Float links to the right. Hide them on small screens -->
+    <div class="w3-right w3-hide-small">
+      <a href="#MuzzlePhotoGallery" class="w3-bar-item w3-button">Muzzle Photo Gallery</a>
+      <a href="#about" class="w3-bar-item w3-button">Information Table</a>
+      <a href="#contact" class="w3-bar-item w3-button">Contact</a>
+    </div>
+  </div>
+</div>
+
+<!-- Header -->
+<header class="w3-display-container w3-content w3-wide" style="max-width:1500px;" id="home">
+  <img class="w3-image" src="/w3images/architect.jpg" alt="Architecture" width="1500" height="800">
+  <div class="w3-display-middle w3-margin-top w3-center">
+    <h1 class="w3-xxlarge w3-text-white"><span class="w3-padding w3-black w3-opacity-min"><b>BR</b></span> <span class="w3-hide-small w3-text-light-grey">Architects</span></h1>
+  </div>
+</header>
+
+<!-- Page content -->
+<div class="w3-content w3-padding" style="max-width:1564px">
+
+  <!-- Project Section -->
+  <div class="w3-container w3-padding-32" id="MuzzlePhotoGallery">
+    <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">Muzzle Photo Gallery</h3>
+  </div>
+
+  <div class="w3-row-padding">
+    <div class="w3-col l3 m6 w3-margin-bottom">
+      <div class="w3-display-container">
+        <img src="/Muzzle%20Pictures/Our%20Pictures/14.jpg" alt="Cannon #14" style="width:100%">
+        <div>
+          <p>Tube Number: 14</p>
+          <p>Manufacturing Year: 1862</p>
+          <p>Barrel Weight: 1223lbs</p>
+          <p>Inspector: J.P.F.</p>
+          <p>Location: Gettysburg National Military Park, 1195 Baltimore Pike, Gettysburg, PA 17325 </p>
+          <p>Image Source: Our photos</p>
         </div>
       </div>
-      <div id="unity-warning"> </div>
-      <div id="unity-footer">
-        <div id="unity-webgl-logo"></div>
-        <div id="unity-fullscreen-button"></div>
-        <div id="unity-build-title">Test World 1</div>
+    </div>
+    <div class="w3-col l3 m6 w3-margin-bottom">
+      <div class="w3-display-container">
+        <img src="Muzzle%20Pictures/Mark%20Reinsten%20-%20Alamy%20Stock%20Photo/46.jpg" alt="#46" style="width:100%">
+         <p>Tube Number: 46</p>
+          <p>Manufacturing Year: 1862</p>
+          <p>Barrel Weight: 1231lbs</p>
+          <p>Inspector: T.J.R.</p>
+          <p>Location: Monocacy River Civil War battlegrounds, Frederick MD </p>
+          <p>Image Source: Mark Reinstein - Alamy Stock Photo <a href=#PhotoSource>[1]</a></p>
       </div>
     </div>
-    <script>
-      var container = document.querySelector("#unity-container");
-      var canvas = document.querySelector("#unity-canvas");
-      var loadingBar = document.querySelector("#unity-loading-bar");
-      var progressBarFull = document.querySelector("#unity-progress-bar-full");
-      var fullscreenButton = document.querySelector("#unity-fullscreen-button");
-      var warningBanner = document.querySelector("#unity-warning");
+    <div class="w3-col l3 m6 w3-margin-bottom">
+      <div class="w3-display-container">
+        <div class="w3-display-topleft w3-black w3-padding">Renovated</div>
+        <img src="/w3images/house3.jpg" alt="House" style="width:100%">
+      </div>
+    </div>
+    <div class="w3-col l3 m6 w3-margin-bottom">
+      <div class="w3-display-container">
+        <div class="w3-display-topleft w3-black w3-padding">Barn House</div>
+        <img src="/w3images/house4.jpg" alt="House" style="width:100%">
+      </div>
+    </div>
+  </div>
 
-      // Shows a temporary message banner/ribbon for a few seconds, or
-      // a permanent error message on top of the canvas if type=='error'.
-      // If type=='warning', a yellow highlight color is used.
-      // Modify or remove this function to customize the visually presented
-      // way that non-critical warnings and error messages are presented to the
-      // user.
-      function unityShowBanner(msg, type) {
-        function updateBannerVisibility() {
-          warningBanner.style.display = warningBanner.children.length ? 'block' : 'none';
-        }
-        var div = document.createElement('div');
-        div.innerHTML = msg;
-        warningBanner.appendChild(div);
-        if (type == 'error') div.style = 'background: red; padding: 10px;';
-        else {
-          if (type == 'warning') div.style = 'background: yellow; padding: 10px;';
-          setTimeout(function() {
-            warningBanner.removeChild(div);
-            updateBannerVisibility();
-          }, 5000);
-        }
-        updateBannerVisibility();
-      }
+  <div class="w3-row-padding">
+    <div class="w3-col l3 m6 w3-margin-bottom">
+      <div class="w3-display-container">
+        <div class="w3-display-topleft w3-black w3-padding">Summer House</div>
+        <img src="/w3images/house2.jpg" alt="House" style="width:99%">
+      </div>
+    </div>
+    <div class="w3-col l3 m6 w3-margin-bottom">
+      <div class="w3-display-container">
+        <div class="w3-display-topleft w3-black w3-padding">Brick House</div>
+        <img src="/w3images/house5.jpg" alt="House" style="width:99%">
+      </div>
+    </div>
+    <div class="w3-col l3 m6 w3-margin-bottom">
+      <div class="w3-display-container">
+        <div class="w3-display-topleft w3-black w3-padding">Renovated</div>
+        <img src="/w3images/house4.jpg" alt="House" style="width:99%">
+      </div>
+    </div>
+    <div class="w3-col l3 m6 w3-margin-bottom">
+      <div class="w3-display-container">
+        <div class="w3-display-topleft w3-black w3-padding">Barn House</div>
+        <img src="/w3images/house3.jpg" alt="House" style="width:99%">
+      </div>
+    </div>
+  </div>
 
-      var buildUrl = "Build";
-      var loaderUrl = buildUrl + "/Conr World WebGL 1-8-23.loader.js";
-      var config = {
-        dataUrl: buildUrl + "/Conr World WebGL 1-8-23.data",
-        frameworkUrl: buildUrl + "/Conr World WebGL 1-8-23.framework.js",
-        codeUrl: buildUrl + "/Conr World WebGL 1-8-23.wasm",
-        streamingAssetsUrl: "StreamingAssets",
-        companyName: "DefaultCompany",
-        productName: "Test World 1",
-        productVersion: "0.1",
-        showBanner: unityShowBanner,
-      };
+  <table border="1" class="styled-table">
+  <thead>
+    <tr style="text-align: center;">
+      <th style="min-width: 10px;">Tube Number</th>
+      <th style="min-width: 10px;">Date Made</th>
+      <th style="min-width: 10px;">Weight of Barrel</th>
+      <th style="min-width: 10px;">Inspector</th>
+      <th style="min-width: 10px;">Location</th>
+      <th style="min-width: 10px;">Notes</th>
+      <th style="min-width: 10px;">Muzzle Picture Source</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>1861</td>
+      <td>853</td>
+      <td>J.P.F.</td>
+      <td>Gettysburg National Military Park, 1195 Baltimore Pike, Gettysburg, PA 17325</td>
+      <td>False Napoleon - 6 pounder made to look like 12 pounder - Muzzle face of 6-pdr Field Gun Model 1841 along Hancock Avenue at Gettysburg. This gun was produced by Revere Copper of Boston, Mass. in 1861. It is registry number 1, of two, produced by the firm for Federal orders. It weighed 853 pounds when inspected by Joseph P. Farley. The gun was altered to a "false Napoleon" by the Gettysburg Battlefield Board in the 1890s to make up for a shortage of 12-pdr Napoleons in the battlefield displays. Much of the muzzle markings were destroyed during the modifications.</td>
+      <td>Muzzle Pictures\Our Pictures\False1.jpg</td>
+    </tr>
+    <tr>
+      <td>--</td>
+      <td>1862</td>
+      <td>1194</td>
+      <td>J.P.F.</td>
+      <td>Malvern Hill Richmond VA</td>
+      <td>Real Number 1 - Muzzle of 12-pdr Model 1857 "Napoleon" at Malvern Hill in the Richmond Battlefields, Virginia. This gun is marked "Revere Copper Co. // 1862 // 1,194 lbs. // J.P.F. // No. 1." J.P.F. are the initials of inspector Joseph P. Farley. The gun was produced in 1862 by Revere Copper in Boston Massachusetts.</td>
+      <td>NO PHOTO</td>
+    </tr>
+    <tr>
+      <td>14</td>
+      <td>1862</td>
+      <td>1223</td>
+      <td>J.P.F.</td>
+      <td>Gettysburg National Military Park, 1195 Baltimore Pike, Gettysburg, PA 17325</td>
+      <td>??</td>
+      <td>Our Photos [1]</td>
+    </tr>
+    <tr>
+      <td>16</td>
+      <td>1862</td>
+      <td>1231</td>
+      <td>T.J.R</td>
+      <td>Monocacy River Civil War battlegrounds, Frederick MD</td>
+      <td>Fredrick, Maryland, USA, 10th June, 2012 Monocacy River Civil War battlegrounds. One of the actual cannons used by the Confederate forces under Lieutenant General Jubal. A. Early against the Union forces under Major General Lew Wallace at the ford of the Monocacy river and Georgetown Pike (now US. interstate highway Rt. 270) Credit: Mark Reinstein</td>
+      <td>??</td>
+    </tr>
+    <tr>
+      <td>18</td>
+      <td>1862</td>
+      <td>1227</td>
+      <td>J.P.F.</td>
+      <td>Manassas Battlefield, 6511 Sudley Rd, Manassas, VA 20109</td>
+      <td>12-pdr Field Gun Model 1857, "Napoleon"\nManufacturer: Revere Copper, Boston, Massachusetts.\nRegistry number: 18\nWeight: 1227 pounds\nYear of manufacture: 1862\nInspector: Joseph P. Farley.</td>
+      <td>??</td>
+    </tr>
+    <tr>
+      <td>22</td>
+      <td>1862</td>
+      <td>1194</td>
+      <td>T.J.R</td>
+      <td>Malvern Hill Richmond VA</td>
+      <td>Muzzle of 12-pdr Model 1857 "Napoleon" at Malvern Hill in the Richmond Battlefields, Virginia. This gun is marked "Revere Copper Co. // 1,194 lbs. // 1862. // T.J.R. // No. 22." T.J.R. are the initials of inspector Thomas J. Rodman. The gun was produced in 1862 by Revere Copper in Boston Massachusetts.</td>
+      <td>??</td>
+    </tr>
+    <tr>
+      <td>27</td>
+      <td>1862</td>
+      <td>??</td>
+      <td>??</td>
+      <td>Petoskey Michigan</td>
+      <td>Petoskey Michigan</td>
+      <td>CharlevoixEmmetHistory [2]</td>
+    </tr>
+    <tr>
+      <td>33</td>
+      <td>1862</td>
+      <td>1224</td>
+      <td>T.J.R</td>
+      <td>Antietam National Battlefield, 302 E Main St, Sharpsburg, MD 21782</td>
+      <td>One of two 12-pdr Napoleons representing Battery B, 4th US Artillery just west of the Cornfield at Antietam. The gun is registry number 33 from Revere Copper, cast in 1862. It was inspected by Thomas J. Rodman and weighed 1224 pounds.</td>
+      <td>??</td>
+    </tr>
+    <tr>
+      <td>41</td>
+      <td>1862</td>
+      <td>1227</td>
+      <td>T.J.R</td>
+      <td>Antietam National Battlefield, 302 E Main St, Sharpsburg, MD 21782</td>
+      <td>12-pdr Napoleon Gun at the intersection of Branch Avenue and Harpers Ferry Road, Antietam. The guns here represent Pegram's "Purcell" Battery in the final stages of the battle. The gun is registry number 41 produced by Revere Copper in 1862. It was inspected by Thomas J. Rodman and weighed 1227 pounds.</td>
+      <td>??</td>
+    </tr>
 
-      // By default Unity keeps WebGL canvas render target size matched with
-      // the DOM size of the canvas element (scaled by window.devicePixelRatio)
-      // Set this to false if you want to decouple this synchronization from
-      // happening inside the engine, and you would instead like to size up
-      // the canvas DOM size and WebGL render target sizes yourself.
-      // config.matchWebGLToCanvasSize = false;
+  <!-- About Section -->
+  <div class="w3-container w3-padding-32" id="about">
+    <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">About</h3>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint
+      occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+      laboris nisi ut aliquip ex ea commodo consequat.
+    </p>
+  </div>
 
-      if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
-        // Mobile device style: fill the whole browser client area with the game canvas:
+  <div class="w3-container w3-padding-32" id=#PhotoSource>
+    <p>Image Source Information</p>
+  </div>
 
-        var meta = document.createElement('meta');
-        meta.name = 'viewport';
-        meta.content = 'width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, shrink-to-fit=yes';
-        document.getElementsByTagName('head')[0].appendChild(meta);
-        container.className = "unity-mobile";
-        canvas.className = "unity-mobile";
+  <div class="w3-row-padding w3-grayscale">
+    <div class="w3-col l3 m6 w3-margin-bottom">
+      <img src="/w3images/team2.jpg" alt="John" style="width:100%">
+      <h3>John Doe</h3>
+      <p class="w3-opacity">CEO & Founder</p>
+      <p>Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum.</p>
+      <p><button class="w3-button w3-light-grey w3-block">Contact</button></p>
+    </div>
+    <div class="w3-col l3 m6 w3-margin-bottom">
+      <img src="/w3images/team1.jpg" alt="Jane" style="width:100%">
+      <h3>Jane Doe</h3>
+      <p class="w3-opacity">Architect</p>
+      <p>Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum.</p>
+      <p><button class="w3-button w3-light-grey w3-block">Contact</button></p>
+    </div>
+    <div class="w3-col l3 m6 w3-margin-bottom">
+      <img src="/w3images/team3.jpg" alt="Mike" style="width:100%">
+      <h3>Mike Ross</h3>
+      <p class="w3-opacity">Architect</p>
+      <p>Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum.</p>
+      <p><button class="w3-button w3-light-grey w3-block">Contact</button></p>
+    </div>
+    <div class="w3-col l3 m6 w3-margin-bottom">
+      <img src="/w3images/team4.jpg" alt="Dan" style="width:100%">
+      <h3>Dan Star</h3>
+      <p class="w3-opacity">Architect</p>
+      <p>Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum.</p>
+      <p><button class="w3-button w3-light-grey w3-block">Contact</button></p>
+    </div>
+  </div>
 
-        // To lower canvas resolution on mobile devices to gain some
-        // performance, uncomment the following line:
-        // config.devicePixelRatio = 1;
 
-        unityShowBanner('WebGL builds are not supported on mobile devices.');
-      } else {
-        // Desktop style: Render the game canvas in a window that can be maximized to fullscreen:
+  <!-- Contact Section -->
+  <div class="w3-container w3-padding-32" id="contact">
+    <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">Contact</h3>
+    <p>Lets get in touch and talk about your next project.</p>
+    <form action="/action_page.php" target="_blank">
+      <input class="w3-input w3-border" type="text" placeholder="Name" required name="Name">
+      <input class="w3-input w3-section w3-border" type="text" placeholder="Email" required name="Email">
+      <input class="w3-input w3-section w3-border" type="text" placeholder="Subject" required name="Subject">
+      <input class="w3-input w3-section w3-border" type="text" placeholder="Comment" required name="Comment">
+      <button class="w3-button w3-black w3-section" type="submit">
+        <i class="fa fa-paper-plane"></i> SEND MESSAGE
+      </button>
+    </form>
+  </div>
+  
+<!-- Image of location/map -->
+<div class="w3-container">
+  <img src="/w3images/map.jpg" class="w3-image" style="width:100%">
+</div>
 
-        canvas.style.width = "960px";
-        canvas.style.height = "600px";
-      }
+<!-- End page content -->
+</div>
 
-      loadingBar.style.display = "block";
 
-      var script = document.createElement("script");
-      script.src = loaderUrl;
-      script.onload = () => {
-        createUnityInstance(canvas, config, (progress) => {
-          progressBarFull.style.width = 100 * progress + "%";
-        }).then((unityInstance) => {
-          loadingBar.style.display = "none";
-          fullscreenButton.onclick = () => {
-            unityInstance.SetFullscreen(1);
-          };
-        }).catch((message) => {
-          alert(message);
-        });
-      };
-      document.body.appendChild(script);
-    </script>
-  </body>
+<!-- Footer -->
+<footer class="w3-center w3-black w3-padding-16">
+  <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-text-green">w3.css</a></p>
+</footer>
+
+</body>
 </html>
